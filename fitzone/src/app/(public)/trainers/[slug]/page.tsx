@@ -15,13 +15,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  let trainer = null;
+  let trainer: Awaited<ReturnType<typeof prisma.trainer.findUnique>> = null;
   try {
     trainer = await prisma.trainer.findUnique({ where: { slug } });
   } catch {
     trainer = null;
   }
-  if (!trainer) trainer = await getTrainerBySlug(slug);
+  if (!trainer) trainer = await getTrainerBySlug(slug) as any;
   if (!trainer) return { title: "Trainer Not Found" };
   return { title: trainer.name, description: trainer.bio };
 }
