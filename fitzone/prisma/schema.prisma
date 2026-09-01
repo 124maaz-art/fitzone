@@ -1,0 +1,247 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  STAFF
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+  REJECTED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(STAFF)
+  image        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([email])
+}
+
+model EquipmentCategory {
+  id        String      @id @default(cuid())
+  name      String
+  slug      String      @unique
+  description String?
+  active    Boolean     @default(true)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  equipment Equipment[]
+
+  @@index([slug])
+}
+
+model Equipment {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  image       String?
+  categoryId  String
+  category    EquipmentCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  description String
+  features    String[]
+  benefits    String[]
+  targetMuscle String?
+  trainingType String?
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([categoryId])
+  @@index([slug])
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  image       String?
+  description String
+  benefits    String[]
+  duration    Int
+  durationUnit String  @default("minutes")
+  price       Decimal  @db.Decimal(10, 2)
+  active      Boolean @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  bookings    Booking[]
+
+  @@index([slug])
+}
+
+model MembershipPackage {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  price       Decimal  @db.Decimal(10, 2)
+  duration    String
+  benefits    String[]
+  description String?
+  featured    Boolean @default(false)
+  active      Boolean @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  bookings    Booking[]
+
+  @@index([slug])
+}
+
+model Trainer {
+  id            String    @id @default(cuid())
+  name          String
+  slug          String    @unique
+  image         String?
+  bio           String
+  specializations String[]
+  experience    Int
+  certifications String[]
+  availability  String?
+  active        Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  availabilities TrainerAvailability[]
+  bookings      Booking[]
+
+  @@index([slug])
+}
+
+model TrainerAvailability {
+  id         String  @id @default(cuid())
+  trainerId  String
+  trainer    Trainer @relation(fields: [trainerId], references: [id], onDelete: Cascade)
+  day        Int
+  available  Boolean @default(true)
+  startTime  String?
+  endTime    String?
+
+  @@unique([trainerId, day])
+}
+
+model Program {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String
+  image       String?
+  duration    String
+  difficulty  String
+  benefits    String[]
+  active      Boolean @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+}
+
+model GalleryCategory {
+  id           String        @id @default(cuid())
+  name         String
+  slug         String        @unique
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  items        GalleryItem[]
+
+  @@index([slug])
+}
+
+model GalleryItem {
+  id          String          @id @default(cuid())
+  title       String
+  image       String
+  categoryId  String
+  category    GalleryCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  active      Boolean         @default(true)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  @@index([categoryId])
+}
+
+model Transformation {
+  id         String   @id @default(cuid())
+  memberName String
+  beforeImage String
+  afterImage String
+  story      String
+  duration   String
+  goal       String
+  result     String
+  active     Boolean @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  image     String?
+  rating    Int
+  review    String
+  date      DateTime @default(now())
+  active    Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Booking {
+  id            String        @id @default(cuid())
+  reference     String        @unique
+  fullName      String
+  phone         String
+  email         String
+  whatsapp      String?
+  serviceId     String?
+  service       Service?      @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  packageId     String?
+  package       MembershipPackage? @relation(fields: [packageId], references: [id], onDelete: SetNull)
+  trainerId     String?
+  trainer       Trainer?      @relation(fields: [trainerId], references: [id], onDelete: SetNull)
+  date          DateTime
+  time          String
+  fitnessGoal   String?
+  notes         String?
+  status        BookingStatus @default(PENDING)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([date])
+  @@index([status])
+  @@index([email])
+  @@index([trainerId])
+  @@index([serviceId])
+}
+
+model Inquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String
+  status    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([status])
+}
+
+model SiteSetting {
+  id       String @id @default(cuid())
+  key      String @unique
+  value    String
+}

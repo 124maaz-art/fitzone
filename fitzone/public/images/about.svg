@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1200" viewBox="0 0 1000 1200" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#121212"/>
+      <stop offset="1" stop-color="#1d0b0e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1200" fill="url(#g)"/>
+  <g stroke="#ef4444" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.85">
+    <line x1="250" y1="260" x2="750" y2="260"/>
+    <line x1="250" y1="900" x2="750" y2="900"/>
+    <line x1="420" y1="230" x2="420" y2="930"/>
+    <line x1="580" y1="230" x2="580" y2="930"/>
+  </g>
+  <g transform="translate(320,760)" stroke="#f97316" stroke-width="16" fill="none" stroke-linecap="round">
+    <line x1="0" y1="0" x2="360" y2="0"/>
+    <circle cx="60" cy="-40" r="16" fill="#f97316" stroke="none"/>
+    <circle cx="300" cy="-40" r="16" fill="#f97316" stroke="none"/>
+    <line x1="60" y1="-240" x2="60" y2="40"/>
+    <line x1="300" y1="-240" x2="300" y2="40"/>
+  </g>
+  <text x="500" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="60" font-weight="900" fill="#fafafa" letter-spacing="6">TRAIN HARDER</text>
+</svg>

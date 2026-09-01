@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#16080a"/>
+      <stop offset="1" stop-color="#2b0f14"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <g opacity="0.8" fill="none" stroke="#ef4444" stroke-width="10" stroke-linecap="round">
+    <line x1="120" y1="820" x2="1480" y2="820"/>
+    <line x1="300" y1="760" x2="300" y2="880"/>
+    <line x1="1300" y1="760" x2="1300" y2="880"/>
+    <circle cx="300" cy="720" r="10" fill="#ef4444"/>
+    <circle cx="1300" cy="720" r="10" fill="#ef4444"/>
+    <line x1="300" y1="660" x2="300" y2="720"/>
+    <line x1="1300" y1="660" x2="1300" y2="720"/>
+    <line x1="150" y1="700" x2="1450" y2="700" opacity="0.35"/>
+  </g>
+  <text x="800" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="80" font-weight="900" fill="#fafafa" letter-spacing="8">READY TO TRANSFORM</text>
+  <text x="800" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#ef4444" letter-spacing="6">YOUR BODY?</text>
+</svg>

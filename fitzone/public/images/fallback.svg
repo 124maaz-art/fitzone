@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#131317"/>
+  <rect x="20" y="20" width="760" height="560" rx="24" fill="#1a1a20" stroke="#27272a"/>
+  <circle cx="400" cy="260" r="60" fill="none" stroke="#ef4444" stroke-width="6"/>
+  <path d="M400 230 V290 M366 260 H434" stroke="#ef4444" stroke-width="6" stroke-linecap="round"/>
+  <path d="M400 350 V410" stroke="#ef4444" stroke-width="6" stroke-linecap="round"/>
+  <path d="M400 380 C340 380 300 360 300 320" stroke="#ef4444" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <rect x="400" y="360" width="7" height="50" rx="3" fill="#ef4444"/>
+  <path d="M407 375 C440 375 470 360 470 330" stroke="#ef4444" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <text x="400" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#fafafa" letter-spacing="6">FITZONE</text>
+</svg>

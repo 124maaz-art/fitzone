@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="s" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0a0a"/>
+      <stop offset="0.6" stop-color="#0f1118"/>
+      <stop offset="1" stop-color="#1d1720"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#s)"/>
+  <g fill="#ef4444">
+    <circle cx="460" cy="400" r="90"/>
+    <rect x="900" y="310" width="200" height="180" rx="24"/>
+  </g>
+  <g stroke="#fafafa" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M 460 250 v 300"/>
+    <line x1="430" y1="690" x2="820" y2="520"/>
+  </g>
+  <text x="800" y="790" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="900" fill="#fafafa" letter-spacing="10">SERVICES</text>
+</svg>

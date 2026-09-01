@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="80" viewBox="0 0 320 80">
+  <g transform="translate(6,10)">
+    <rect x="0" y="0" width="60" height="60" rx="12" fill="#ef4444"/>
+    <path d="M30 6v40M18 18v16M42 18v16" stroke="#ffffff" stroke-width="6" stroke-linecap="round" fill="none"/>
+  </g>
+  <text x="80" y="52" font-family="Arial, sans-serif" font-size="36" font-weight="900" fill="#fafafa" letter-spacing="4">FITZONE</text>
+</svg>
