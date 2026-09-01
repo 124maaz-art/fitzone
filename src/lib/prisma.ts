@@ -6,9 +6,13 @@ const globalForPrisma = globalThis as unknown as {
 };
 
 function createClient(): PrismaClient {
-  const adapter = new PrismaPg({
-    connectionString: process.env.DATABASE_URL ?? "",
-  });
+  const connectionString = process.env.DATABASE_URL;
+  if (!connectionString) {
+    throw new Error(
+      "DATABASE_URL is not set. Add it to your environment (e.g. Vercel Project Settings > Environment Variables).",
+    );
+  }
+  const adapter = new PrismaPg({ connectionString });
   return new PrismaClient({ adapter });
 }
 
